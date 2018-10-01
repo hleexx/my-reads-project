@@ -4,7 +4,7 @@ import * as BooksAPI from '../../BooksAPI'
 
 import Shelf from '../Shelf';
 
-/* Adds empty array for 
+/* Adds empty array */
 class MainPage extends React.Component {
 	constructor(props) {
 		super(props);
