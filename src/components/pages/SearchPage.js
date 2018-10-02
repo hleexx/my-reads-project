@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import * as BooksAPI from '../../BooksAPI'
 
-import Book from '../Book';
+import Book from '../Books';
 
 
 class SearchPage extends React.Component {
@@ -27,6 +27,7 @@ class SearchPage extends React.Component {
 		this.setState({query: query}, this.submitSearch);
 	}
 
+	/* For all scenarios and then will update the shelf -- error handling */
 	submitSearch() {
 		if(this.state.query === '' || this.state.query === undefined) {
 			return this.setState({ results: [] });
@@ -38,11 +39,11 @@ class SearchPage extends React.Component {
 			else {
 				res.forEach(b => {
 					let f = this.state.books.filter(B => B.id === b.id);
-					if(f[0]) { b.self= f[0].shelf; }
+					if(f.length > 0) { b.shelf= f[0].shelf; }
 				});
-				return this.setState({results: res });
+				return this.setState({ results: res });
 			}
-		}
+		});
 	}
 
 
@@ -56,11 +57,12 @@ class SearchPage extends React.Component {
 		});
 	}
 
+/* Update query searches the shelves and shows the results */
 	render() {
 		return (
 			<div className="search-books">
 				<div className="search-books-bar">
-					<link className="close-search" to="/">Close</link>
+					<Link className="close-search" to="/">Close</Link>
 					<div className="search-books-input-wrapper">
 					<input type="text" placeholder="Search by title or author" value={this.state.query}
 						onChange={(event) => this.updateQuery(event.target.value)} />
@@ -69,7 +71,7 @@ class SearchPage extends React.Component {
 				<div className="search-books-results">
 					<ol className="books-grid">
 						{
-							this.state.results.map(book, key) => <Book updateBook>{this.updateBook} book={book} key={key} />)
+							this.state.results.map((book, key) => <Book updateBook={this.updateBook} book={book} key={key} />)
 						}
 					</ol>
 				</div>

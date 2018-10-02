@@ -2,12 +2,12 @@ import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-import ( Route ) from 'react-router.dom'
+import { Route } from 'react-router-dom'
 
 
 /* Simple mounting */
 import MainPage from './components/pages/MainPage';
-import SearchPage from '.components/pages/SearchPage';
+import SearchPage from './components/pages/SearchPage';
 
 class BooksApp extends React.Component {
   render() {

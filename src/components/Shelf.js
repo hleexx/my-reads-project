@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Book from './Book';
+import Book from './Books';
 
-
+/* Name comes from props and books that it will render will come from the main page */
 class Shelf extends React.Component {
 	render() {
 		return (
@@ -12,7 +12,7 @@ class Shelf extends React.Component {
 				<div className="bookshelf-books">
 					<ol className="books-grid">
 						{
-							this.props.books.map((book,key) => <Book updateBook={this.props.updateBook} book={book} Key={key} />)
+							this.props.books.map((book,key) => <Book updateBook={this.props.updateBook} book={book} key={key} />)
 						}
 					</ol>
 				</div>
