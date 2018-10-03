@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import * as BooksAPI from '../BooksAPI';
 
 /* Setting book values and what happen when books changes with error handling */
 class Book extends React.Component {
